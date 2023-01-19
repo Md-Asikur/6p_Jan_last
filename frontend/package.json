@@ -65,5 +65,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://pack6-last-jan.onrender.com"
+  "proxy": "http://localhost:5000"
 }

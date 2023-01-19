@@ -7,38 +7,44 @@ import "./Profile.css";
 import { useNavigate } from "react-router-dom";
 const Profile = () => {
   const { user, loading, isAuthenticated } = useSelector((state) => state.user);
-  //const currentUser = JSON.parse(localStorage.getItem("currentUserPack"));
-const history=useHistory()
+  const currentUser = JSON.parse(localStorage.getItem("currentUserPack"));
+// const history=useHistory()
+//   useEffect(() => {
+//     if (isAuthenticated === false) {
+//       history.push("/login");
+//     }
+//   }, [history, isAuthenticated]);
+  const history = useHistory();
   useEffect(() => {
-    if (isAuthenticated === false) {
+    if (!currentUser) {
       history.push("/login");
     }
-  }, [history, isAuthenticated]);
+  }, [history, currentUser]);
   return (
     <Fragment>
       {loading ? (
         <Loader />
       ) : (
         <Fragment>
-          <MetaData title={`${user?.name}'s Profile`} />
+          <MetaData title={`${currentUser?.name}'s Profile`} />
           <div className="profileContainer">
             <div>
               <h1>My Profile</h1>
-              <img src={user?.avatar?.url} alt={user?.name} />
+              <img src={currentUser?.avatar?.url} alt={currentUser?.name} />
               <Link to="/me/update">Edit Profile</Link>
             </div>
             <div>
               <div>
                 <h4>Full Name</h4>
-                <p>{user?.name}</p>
+                <p>{currentUser?.name}</p>
               </div>
               <div>
                 <h4>Email</h4>
-                <p>{user?.email}</p>
+                <p>{currentUser?.email}</p>
               </div>
               <div>
                 <h4>Joined On</h4>
-                <p>{String(user?.createdAt).substr(0, 10)}</p>
+                <p>{String(currentUser?.createdAt).substr(0, 10)}</p>
               </div>
 
               <div>

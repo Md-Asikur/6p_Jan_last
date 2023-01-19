@@ -4,7 +4,7 @@ import { Redirect, Route } from "react-router-dom";
 
 const ProtectedRoute = ({ isAdmin, component: Component, ...rest }) => {
   const { loading, isAuthenticated, user } = useSelector((state) => state.user);
- //const currentUser = JSON.parse(window.localStorage.getItem("currentUserPack"));
+ const currentUser = JSON.parse(window.localStorage.getItem("currentUser"));
 
   return (
     <Fragment>
@@ -12,11 +12,11 @@ const ProtectedRoute = ({ isAdmin, component: Component, ...rest }) => {
         <Route
           {...rest}
           render={(props) => {
-            if (isAuthenticated === false) {
+            if (!currentUser) {
               return <Redirect to="/login" />;
             }
 
-            if (isAdmin === true && user?.role !== "admin") {
+            if (isAdmin === true && currentUser?.role !== "admin") {
               return <Redirect to="/login" />;
             }
 

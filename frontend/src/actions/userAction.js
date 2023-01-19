@@ -39,7 +39,7 @@ import {
 import axios from "axios";
  const baseURL = process.env.REACT_APP_SERVER_URL;
 // Login
-export const login = (email, password) => async (dispatch) => {
+export const login = (email, password) => async (dispatch, getState) => {
   try {
     dispatch({ type: LOGIN_REQUEST });
 
@@ -52,11 +52,11 @@ export const login = (email, password) => async (dispatch) => {
     );
 
     dispatch({ type: LOGIN_SUCCESS, payload: data.user });
-    //localStorage.setItem("currentUser", JSON.stringify(data.user));
+   
+    
   } catch (error) {
     dispatch({ type: LOGIN_FAIL, payload: error.response.data.message });
   }
- 
 };
 
 // Register
@@ -98,7 +98,7 @@ export const logout = () => async (dispatch) => {
     await axios.get(`${baseURL}/api/v1/logout`);
 
     dispatch({ type: LOGOUT_SUCCESS });
-    // localStorage.removeItem("currentUser");
+     //localStorage.removeItem("currentUser");
   } catch (error) {
     dispatch({ type: LOGOUT_FAIL, payload: error.response.data.message });
   }
