@@ -81,10 +81,10 @@ const MyOrders = () => {
   orders &&
     orders.forEach((item, index) => {
       rows.push({
-        itemsQty: item.orderItems.length,
-        id: item._id,
-        status: item.orderStatus,
-        amount: item.totalPrice,
+        itemsQty: item?.orderItems?.length,
+        id: item?._id,
+        status: item?.orderStatus,
+        amount: item?.totalPrice,
       });
     });
 

@@ -23,8 +23,8 @@ const OrderDetails = () => {
       dispatch(clearErrors());
     }
 
-    dispatch(getOrderDetails(params.id));
-  }, [dispatch, alert, error, params.id]);
+    dispatch(getOrderDetails(params?.id));
+  }, [dispatch, alert, error, params?.id]);
   return (
     <Fragment>
       {loading ? (
@@ -34,7 +34,7 @@ const OrderDetails = () => {
           <MetaData title="Order Details" />
           <div className="orderDetailsPage">
             <div className="orderDetailsContainer">
-              <Typography component="h1">Order #{order && order._id}</Typography>
+              <Typography component="h1">Order #{order && order?._id}</Typography>
               <Typography>Shipping Info</Typography>
               <div className="orderDetailsContainerBox">
                 <div>

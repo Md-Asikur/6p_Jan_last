@@ -214,7 +214,7 @@ exports.deleteReview = catchAsyncErrors(async (req, res, next) => {
   }
 
   const reviews = product.reviews.filter(
-    (rev) => rev?._id?.toString() !== req?.query?.id?.toString()
+    (rev) => rev._id.toString() !== req?.query?.id.toString()
   );
 
   let avg = 0;
