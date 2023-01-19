@@ -13,8 +13,8 @@ const UpdateProfile = () => {
   const dispatch = useDispatch();
   const alert = useAlert();
 const history=useHistory()
-  //const { user } = useSelector((state) => state.user);
-  const user = JSON.parse(localStorage.getItem("currentUser"));
+  const { user } = useSelector((state) => state.user);
+  //const user = JSON.parse(localStorage.getItem("currentUser"));
   const { error, isUpdated, loading } = useSelector((state) => state.profile);
 
   const [name, setName] = useState("");

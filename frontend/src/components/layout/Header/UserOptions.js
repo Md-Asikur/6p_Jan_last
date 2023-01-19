@@ -28,7 +28,7 @@ const UserOptions = ({ user }) => {
       icon: (
         <ShoppingCartIcon style={{ color: cartItems.length > 0 ? "tomato" : "unset" }} />
       ),
-      name: `Cart(${cartItems.length})`,
+      name: `Cart(${cartItems?.length})`,
       func: cart,
     },
     { icon: <ExitToAppIcon />, name: "Logout", func: logoutUser },
@@ -79,7 +79,7 @@ const UserOptions = ({ user }) => {
         icon={
           <img
             className="speedDialIcon"
-            src={user.avatar.url ? user.avatar.url : "/Profile.png"}
+            src={user?.avatar?.url ? user?.avatar?.url : "/Profile.png"}
             alt="Profile"
           />
         }

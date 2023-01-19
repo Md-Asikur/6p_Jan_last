@@ -37,7 +37,7 @@ import {
   CLEAR_ERRORS,
 } from "../constants/userConstants";
 import axios from "axios";
- const baseURL = process.env.REACT_APP_SERVER_URL;
+ 
 // Login
 export const login = (email, password) => async (dispatch) => {
   try {
