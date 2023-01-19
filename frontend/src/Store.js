@@ -67,18 +67,18 @@ let initialState = {
       ? JSON.parse(localStorage.getItem("shippingInfo"))
       : {},
   },
-  currentUserPack: {
-    currentUserPack: localStorage.getItem("currentUserPack")
-      ? JSON.parse(localStorage.getItem("currentUserPack"))
-      : {},
-  },
+  // currentUserPack: {
+  //   currentUserPack: localStorage.getItem("currentUserPack")
+  //     ? JSON.parse(localStorage.getItem("currentUserPack"))
+  //     : {},
+  // },
   // currentUser: {
   //   currentUser: localStorage.getItem("currentUser")
   //     ? JSON.parse(localStorage.getItem("currentUser"))
   //     : {},
   // },
 };
-console.log(initialState.currentUserPack)
+// console.log(initialState.currentUserPack)
 
 
 const middleware = [thunk];
