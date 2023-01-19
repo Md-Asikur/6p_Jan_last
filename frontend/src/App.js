@@ -53,7 +53,7 @@ function App() {
 const baseURL = process.env.REACT_APP_SERVER_URL;
   async function getStripeApiKey() {
     const { data } = await axios.get(
-      `${baseURL}/api/v1/stripeapikey`
+      `/api/v1/stripeapikey`
     );
 
     setStripeApiKey(data.stripeApiKey);
