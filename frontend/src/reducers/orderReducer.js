@@ -31,6 +31,7 @@ export const newOrderReducer = (state = {}, action) => {
       };
 
     case CREATE_ORDER_SUCCESS:
+        sessionStorage.setItem("crOrder", JSON.stringify(action.payload));
       return {
         loading: false,
         order: action.payload,
@@ -60,6 +61,7 @@ export const myOrdersReducer = (state = { orders: [] }, action) => {
       };
 
     case MY_ORDERS_SUCCESS:
+       sessionStorage.setItem("myOrders", JSON.stringify(action.payload));
       return {
         loading: false,
         orders: action.payload,
@@ -89,6 +91,7 @@ export const allOrdersReducer = (state = { orders: [] }, action) => {
       };
 
     case ALL_ORDERS_SUCCESS:
+       sessionStorage.setItem("allOrders", JSON.stringify(action.payload));
       return {
         loading: false,
         orders: action.payload,
@@ -120,6 +123,7 @@ export const orderReducer = (state = {}, action) => {
       };
 
     case UPDATE_ORDER_SUCCESS:
+       sessionStorage.setItem("updOrder", JSON.stringify(action.payload));
       return {
         ...state,
         loading: false,
@@ -127,6 +131,7 @@ export const orderReducer = (state = {}, action) => {
       };
 
     case DELETE_ORDER_SUCCESS:
+       sessionStorage.setItem("delOrder", JSON.stringify(action.payload));
       return {
         ...state,
         loading: false,
@@ -170,6 +175,7 @@ export const orderDetailsReducer = (state = { order: {} }, action) => {
       };
 
     case ORDER_DETAILS_SUCCESS:
+       sessionStorage.setItem("orderDetails", JSON.stringify(action.payload));
       return {
         loading: false,
         order: action.payload,

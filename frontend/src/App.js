@@ -53,7 +53,7 @@ function App() {
 const baseURL = process.env.REACT_APP_SERVER_URL;
   async function getStripeApiKey() {
     const { data } = await axios.get(
-      `/api/v1/stripeapikey`
+      `${baseURL}/api/v1/stripeapikey`
     );
 
     setStripeApiKey(data.stripeApiKey);
@@ -74,7 +74,9 @@ const baseURL = process.env.REACT_APP_SERVER_URL;
 
   // window.addEventListener("contextmenu", (e) => e.preventDefault());
   
-  const currentUser = JSON.parse(localStorage.getItem("currentUserPack"));
+  const currentUser = sessionStorage.getItem("currentUserPack")
+    ? JSON.parse(sessionStorage.getItem("currentUserPack"))
+    : {};
   //console.log(currentUser)
      
   
@@ -122,53 +124,53 @@ const baseURL = process.env.REACT_APP_SERVER_URL;
           <ProtectedRoute
             exact
             path="/admin/products"
-            isAdmin={true}
+            
             component={ProductList}
           />
           <ProtectedRoute
             exact
             path="/admin/product"
-            isAdmin={true}
+           
             component={NewProduct}
           />
 
           <ProtectedRoute
             exact
             path="/admin/product/:id"
-            isAdmin={true}
+            
             component={UpdateProduct}
           />
           <ProtectedRoute
             exact
             path="/admin/orders"
-            isAdmin={true}
+            
             component={OrderList}
           />
 
           <ProtectedRoute
             exact
             path="/admin/order/:id"
-            isAdmin={true}
+           
             component={ProcessOrder}
           />
           <ProtectedRoute
             exact
             path="/admin/users"
-            isAdmin={true}
+          
             component={UsersList}
           />
 
           <ProtectedRoute
             exact
             path="/admin/user/:id"
-            isAdmin={true}
+           
             component={UpdateUser}
           />
 
           <ProtectedRoute
             exact
             path="/admin/reviews"
-            isAdmin={true}
+            
             component={ProductReviews}
           />
           <ProtectedRoute exact path="/shipping" component={Shipping} />

@@ -16,9 +16,15 @@ const MyOrders = () => {
 
   const alert = useAlert();
 
-  const { loading, error, orders } = useSelector((state) => state.myOrders);
-  const { user } = useSelector((state) => state.user);
-
+  const { loading, error } = useSelector((state) => state.myOrders);
+  //const { user } = useSelector((state) => state.user);
+ const user = sessionStorage.getItem("currentUserPack")
+   ? JSON.parse(sessionStorage.getItem("currentUserPack"))
+   : {};
+  const orders = sessionStorage.getItem("myOrders")
+    ? JSON.parse(sessionStorage.getItem("myOrders"))
+    : {};
+  console.log(orders)
   const columns = [
     { field: "id", headerName: "Order ID", minWidth: 300, flex: 1 },
 
@@ -93,7 +99,7 @@ const MyOrders = () => {
 
   return (
     <Fragment>
-      <MetaData title={`${user.name} - Orders`} />
+      <MetaData title={`${user?.name} - Orders`} />
 
       {loading ? (
         <Loader />
@@ -110,7 +116,7 @@ const MyOrders = () => {
            
           />
 
-          <Typography id="myOrdersHeading">{user.name}'s Orders</Typography>
+          <Typography id="myOrdersHeading">{user?.name}'s Orders</Typography>
         </div>
       )}
     </Fragment>

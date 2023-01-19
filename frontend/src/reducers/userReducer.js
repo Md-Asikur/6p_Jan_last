@@ -41,7 +41,7 @@ import {
   CLEAR_ERRORS,
 } from "../constants/userConstants";
 
-export const userReducer = (state = { user: {} }, action) => {
+export const userReducer = (state = { user: {},currentUserPack:{} }, action) => {
   switch (action.type) {
     case LOGIN_REQUEST:
     case REGISTER_USER_REQUEST:
@@ -53,22 +53,22 @@ export const userReducer = (state = { user: {} }, action) => {
     case LOGIN_SUCCESS:
     case REGISTER_USER_SUCCESS:
     case LOAD_USER_SUCCESS:
-      localStorage.setItem("currentUserPack", JSON.stringify(action.payload));
+      sessionStorage.setItem("currentUserPack", JSON.stringify(action.payload));
       return {
         ...state,
         loading: false,
         isAuthenticated: true,
         user: action.payload,
-       
+        currentUserPack: action.payload,
       };
-
+   
     case LOGOUT_SUCCESS:
-      localStorage.removeItem("currentUserPack");
+     sessionStorage.removeItem("currentUserPack");
       return {
         loading: false,
         user: null,
-       
-         
+
+        currentUserPack: null,
         isAuthenticated: false,
       };
     case LOGIN_FAIL:
@@ -79,7 +79,7 @@ export const userReducer = (state = { user: {} }, action) => {
         loading: false,
         isAuthenticated: false,
         user: null,
-         
+        currentUserPack: null,
         error: action.payload,
       };
 
@@ -89,7 +89,7 @@ export const userReducer = (state = { user: {} }, action) => {
         loading: false,
         isAuthenticated: false,
         user: null,
-         
+        currentUserPack: null,
         error: action.payload,
       };
 

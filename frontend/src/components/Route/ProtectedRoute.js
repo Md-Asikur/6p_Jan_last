@@ -4,8 +4,10 @@ import { Redirect, Route } from "react-router-dom";
 
 const ProtectedRoute = ({ isAdmin, component: Component, ...rest }) => {
   const { loading, isAuthenticated, user } = useSelector((state) => state.user);
- const currentUser = JSON.parse(window.localStorage.getItem("currentUser"));
-
+const currentUser = sessionStorage.getItem("currentUserPack")
+  ? JSON.parse(sessionStorage.getItem("currentUserPack"))
+  : {};
+  
   return (
     <Fragment>
       {loading === false && (
@@ -15,8 +17,8 @@ const ProtectedRoute = ({ isAdmin, component: Component, ...rest }) => {
             if (!currentUser) {
               return <Redirect to="/login" />;
             }
-
-            if (isAdmin === true && currentUser?.role !== "admin") {
+          
+            if (currentUser?.role !== "admin") {
               return <Redirect to="/login" />;
             }
 

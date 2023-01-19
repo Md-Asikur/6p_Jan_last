@@ -7,7 +7,9 @@ import "./Profile.css";
 import { useNavigate } from "react-router-dom";
 const Profile = () => {
   const { user, loading, isAuthenticated } = useSelector((state) => state.user);
-  const currentUser = JSON.parse(localStorage.getItem("currentUserPack"));
+  const currentUser = sessionStorage.getItem("currentUserPack")
+    ? JSON.parse(sessionStorage.getItem("currentUserPack"))
+    : {};
 // const history=useHistory()
 //   useEffect(() => {
 //     if (isAuthenticated === false) {

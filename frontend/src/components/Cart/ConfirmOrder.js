@@ -9,7 +9,7 @@ import { Typography } from "@material-ui/core";
 const ConfirmOrder = ({ history }) => {
   const { shippingInfo, cartItems } = useSelector((state) => state.cart);
   // const { user } = useSelector((state) => state.user);
-  const currentUser = JSON.parse(localStorage.getItem("currentUserPack"));
+  const currentUser = localStorage.getItem("currentUserPack");
   const user = currentUser;
   const subtotal = cartItems.reduce(
     (acc, item) => acc + item.quantity * item.price,

@@ -52,7 +52,7 @@ export const login = (email, password) => async (dispatch, getState) => {
     );
 
     dispatch({ type: LOGIN_SUCCESS, payload: data.user });
-   
+   sessionStorage.setItem("currentUserPack", JSON.stringify(data.user));
     
   } catch (error) {
     dispatch({ type: LOGIN_FAIL, payload: error.response.data.message });
@@ -69,7 +69,7 @@ export const register = (userData) => async (dispatch) => {
     const { data } = await axios.post(`${baseURL}/api/v1/register`, userData, config);
 
     dispatch({ type: REGISTER_USER_SUCCESS, payload: data.user });
-    //localStorage.setItem("currentUser", JSON.stringify(data.user));
+    sessionStorage.setItem("currentUserPack", JSON.stringify(data.user));
   } catch (error) {
     dispatch({
       type: REGISTER_USER_FAIL,
@@ -86,7 +86,7 @@ export const loadUser = () => async (dispatch) => {
     const { data } = await axios.get(`${baseURL}/api/v1/me`);
 
     dispatch({ type: LOAD_USER_SUCCESS, payload: data.user });
-    //localStorage.setItem("currentUser", JSON.stringify(data.user));
+    sessionStorage.setItem("currentUserPack", JSON.stringify(data.user));
   } catch (error) {
     dispatch({ type: LOAD_USER_FAIL, payload: error.response.data.message });
   }
@@ -98,7 +98,7 @@ export const logout = () => async (dispatch) => {
     await axios.get(`${baseURL}/api/v1/logout`);
 
     dispatch({ type: LOGOUT_SUCCESS });
-     //localStorage.removeItem("currentUser");
+     sessionStorage.removeItem("currentUserPack");
   } catch (error) {
     dispatch({ type: LOGOUT_FAIL, payload: error.response.data.message });
   }

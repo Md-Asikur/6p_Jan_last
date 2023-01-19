@@ -190,6 +190,7 @@ export const newReviewReducer = (state = {}, action) => {
         loading: true,
       };
     case NEW_REVIEW_SUCCESS:
+       sessionStorage.setItem("newRev", JSON.stringify(action.payload));
       return {
         loading: false,
         success: action.payload,
@@ -223,6 +224,7 @@ export const productReviewsReducer = (state = { reviews: [] }, action) => {
         loading: true,
       };
     case ALL_REVIEW_SUCCESS:
+        sessionStorage.setItem("allRev", JSON.stringify(action.payload));
       return {
         loading: false,
         reviews: action.payload,
@@ -252,6 +254,7 @@ export const reviewReducer = (state = {}, action) => {
         loading: true,
       };
     case DELETE_REVIEW_SUCCESS:
+        sessionStorage.setItem("delRev", JSON.stringify(action.payload));
       return {
         ...state,
         loading: false,

@@ -19,7 +19,9 @@ const UserOptions = ({ user }) => {
   const history = useHistory();
   const alert = useAlert();
   const dispatch = useDispatch();
-
+  const currentUser = sessionStorage.getItem("currentUserPack")
+    ? JSON.parse(sessionStorage.getItem("currentUserPack"))
+    : {};
   const options = [
     { icon: <ListAltIcon />, name: "Orders", func: orders },
     { icon: <PersonIcon />, name: "Profile", func: account },
@@ -34,7 +36,7 @@ const UserOptions = ({ user }) => {
     { icon: <ExitToAppIcon />, name: "Logout", func: logoutUser },
   ];
 
-  if (user?.role === "admin") {
+  if (currentUser?.role === "admin") {
     options.unshift({
       icon: <DashboardIcon />,
       name: "Dashboard",
@@ -79,7 +81,7 @@ const UserOptions = ({ user }) => {
         icon={
           <img
             className="speedDialIcon"
-            src={user?.avatar?.url ? user?.avatar?.url : "/Profile.png"}
+            src={currentUser?.avatar?.url ? currentUser?.avatar?.url : "/Profile.png"}
             alt="Profile"
           />
         }

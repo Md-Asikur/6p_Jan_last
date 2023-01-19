@@ -31,7 +31,7 @@ const Payment = ({ history }) => {
   const { shippingInfo, cartItems } = useSelector((state) => state.cart);
   //const { user } = useSelector((state) => state.user);
   const { error } = useSelector((state) => state.newOrder);
-const currentUser = JSON.parse(localStorage.getItem("currentUserPack"));
+const currentUser = JSON.parse(sessionStorage.getItem("currentUserPack"));
 const user = currentUser;
   const paymentData = {
     amount: Math.round(orderInfo.totalPrice * 100),
