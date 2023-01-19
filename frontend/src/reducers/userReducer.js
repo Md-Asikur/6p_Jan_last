@@ -53,7 +53,7 @@ export const userReducer = (state = { user: {},currentUserPackPack:{} }, action)
     case LOGIN_SUCCESS:
     case REGISTER_USER_SUCCESS:
     case LOAD_USER_SUCCESS:
-      localStorage.setItem("currentUserPack", JSON.stringify(action.payload));
+     // localStorage.setItem("currentUserPack", JSON.stringify(action.payload));
       return {
         ...state,
         loading: false,
@@ -63,7 +63,7 @@ export const userReducer = (state = { user: {},currentUserPackPack:{} }, action)
       };
 
     case LOGOUT_SUCCESS:
-     localStorage.removeItem("currentUserPack");
+    // localStorage.removeItem("currentUserPack");
       return {
         loading: false,
         user: null,

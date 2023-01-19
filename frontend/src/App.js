@@ -74,14 +74,14 @@ const baseURL = process.env.REACT_APP_SERVER_URL;
 
   // window.addEventListener("contextmenu", (e) => e.preventDefault());
   
-     const currentUser = JSON.parse(localStorage.getItem("currentUserPack"));
+     //const currentUser = JSON.parse(localStorage.getItem("currentUserPack"));
      
   
   return (
     <>
       <BrowserRouter>
         <Headers />
-        {currentUser && (<UserOptions user={currentUser} />)}
+        {isAuthenticated && (<UserOptions user={user} />)}
         {stripeApiKey && (
           <Elements stripe={loadStripe(stripeApiKey)}>
             <ProtectedRoute exact path="/process/payment" component={Payment} />
